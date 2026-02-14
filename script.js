@@ -119,4 +119,20 @@ columns.forEach((column, index) => {
 
   });
 
+
+});
+
+const scrollButtons = document.querySelectorAll('.scroll-btn');
+
+scrollButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const column = btn.closest('.column');
+
+    const scrollAmount = 200; // px por click
+    if (btn.classList.contains('up')) {
+      column.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+    } else {
+      column.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+    }
+  });
 });
