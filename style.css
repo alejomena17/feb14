@@ -195,4 +195,33 @@ h1 {
   h1 {
     font-size: 20px;
   }
+   .scroll-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.scroll-btn.up {
+  top: 5px;
+}
+
+.scroll-btn.down {
+  bottom: 5px;
+}
+
+.scroll-btn:hover {
+  background: rgba(255,255,255,0.9);
+}
+}
+
