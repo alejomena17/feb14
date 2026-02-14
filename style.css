@@ -1,4 +1,6 @@
-/* RESET BÁSICO */
+/* ==========================
+   RESET BÁSICO
+========================== */
 * {
   margin: 0;
   padding: 0;
@@ -9,12 +11,11 @@ body {
   background: linear-gradient(135deg, #ff9a9e, #fad0c4);
   font-family: Arial, sans-serif;
   text-align: center;
-  overflow: hidden;
   color: white;
   height: 100vh;
+  overflow: hidden;
 }
 
-/* TITULO */
 h1 {
   margin: 20px 0;
   font-size: 26px;
@@ -24,25 +25,28 @@ h1 {
   margin-bottom: 15px;
 }
 
-/* CONTENEDOR PRINCIPAL */
+/* ==========================
+   CARRUSEL PRINCIPAL
+========================== */
 .carousel-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas verticales */
+  grid-template-columns: repeat(4, 1fr);
   height: 75vh;
   width: 100%;
   gap: 12px;
   padding: 0 12px;
-  position: relative;
 }
 
 /* COLUMNAS SCROLL */
 .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
   overflow-y: auto;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
   scroll-snap-type: y mandatory;
-  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y; /* permite scroll vertical */
   position: relative;
 }
 
@@ -57,23 +61,24 @@ h1 {
 
 /* SNAP POR TARJETA */
 .card {
-  width: 100%;
-  height: 300px;
+  width: 220px; /* más grande horizontalmente */
+  height: 260px;
   perspective: 1000px;
   flex-shrink: 0;
   cursor: pointer;
   scroll-snap-align: center;
+  touch-action: manipulation; /* flip en móvil */
 }
 
 /* CARRUSEL INTERNO */
 .carousel {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 50px 0; /* espacio arriba y abajo para blur */
+  gap: 25px;
+  padding: 80px 0; /* espacio arriba y abajo para blur */
 }
 
-/* FLIP */
+/* FLIP TARJETA */
 .card-inner {
   width: 100%;
   height: 100%;
@@ -86,7 +91,7 @@ h1 {
   transform: rotateY(180deg);
 }
 
-/* LADOS DE LA TARJETA */
+/* LADOS TARJETA */
 .card-front,
 .card-back {
   position: absolute;
@@ -116,7 +121,9 @@ h1 {
   text-align: center;
 }
 
-/* EFECTO BLUR ARRIBA Y ABAJO */
+/* ==========================
+   EFECTO BLUR ARRIBA/ABAJO
+========================== */
 .column::before,
 .column::after {
   content: "";
@@ -138,7 +145,9 @@ h1 {
   background: linear-gradient(to top, rgba(250,208,196,1), rgba(250,208,196,0));
 }
 
-/* CORAZONES FLOTANDO */
+/* ==========================
+   CORAZONES FLOTANDO
+========================== */
 .hearts {
   position: fixed;
   top: 0;
@@ -167,16 +176,20 @@ h1 {
   }
 }
 
-/* RESPONSIVE */
+/* ==========================
+   RESPONSIVE MÓVIL
+========================== */
 @media (max-width: 768px) {
-
   .carousel-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+    grid-template-columns: repeat(2, 1fr);
     height: 70vh;
   }
 
   .card {
-    height: 240px;
+    width: 90%; /* ocupa casi toda la columna */
+    max-width: 280px;
+    aspect-ratio: 4 / 5; /* proporción estética */
+    height: auto;
   }
 
   h1 {
